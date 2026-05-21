@@ -4,222 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TATSUMAKI Creative Studio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d1539a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    
     <script>
-      // URLからFacebookのノイズ（fbclid）を綺麗に消し去るコード
       if (window.location.search.indexOf('fbclid=') !== -1) {
         var cleanUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
         window.history.replaceState({}, document.title, cleanUrl);
       }
     </script>
-</head>
-<body id="top">
-    <header class="main-header">
-        <div class="logo">
-            <span class="logo-title">TATSUMAKI</span>
-            <span class="logo-subtitle">Creative Studio</span>
-        </div>
-        <nav class="nav-links">
-            <a href="#top">TOP</a>
-            <a href="#concept">CONCEPT</a>
-            <a href="#flow">STRUCTURE</a>
-            <a href="#service">SERVICE</a>
-            <a href="#works">WORKS</a>
-            <a href="#about">ABOUT</a>
-            <a href="#contact">CONTACT</a>
-        </nav>
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
 
-    <nav class="mobile-nav" id="mobile-nav">
-        <a href="#top">TOP</a>
-        <a href="#concept">CONCEPT</a>
-        <a href="#flow">STRUCTURE</a>
-        <a href="#service">SERVICE</a>
-        <a href="#works">WORKS</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-    </nav>
+    <style>
+        /* 共通リセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Noto Sans JP", sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">T A T S U M A K I</h1>
-            <p class="hero-lead">問いから考え、<br>課題をともに解く。</p>
-        </div>
-        
-        <div class="aside-bside">
-            <span class="side-text">A S I D E</span>
-            <span class="slash">/</span>
-            <span class="side-text">B S I D E</span>
-        </div>
+        /* ヘッダー */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-title {
+            font-family: "Cinzel", serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+        .logo-subtitle {
+            font-size: 0.65rem;
+            letter-spacing: 0.05em;
+            color: #888888;
+            margin-top: -2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #888888;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 110;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s;
+        }
 
-        <div class="hero-works">
-            <a href="#" class="works-link">クライマックスベイベェ MV &nbsp;→</a>
-        </div>
-
-        <div class="scroll-down">
-            <span>SCROLL</span>
-            <div class="arrow"></div>
-        </div>
-    </section>
-
-    <section id="concept" class="concept-section">
-        <div class="concept-header">
-            <span class="section-number">02</span>
-            <h2>CONCEPT</h2>
-        </div>
-        <div class="concept-container">
-            <div class="concept-block">
-                <p class="jp-text">企業や地域が<br>抱える課題は、<br>「解くべき問題」<br>そのものが<br>ずれていることが<br>あります。</p>
-                <p class="en-text">The challenges facing<br>companies and communities<br>often stem from asking<br>the wrong question<br>in the first place.</p>
-            </div>
-            <div class="concept-block">
-                <p class="jp-text">その背景には、<br>思い込みや仮説だけで<br>進んでしまうことも<br>少なくありません。</p>
-                <p class="en-text">Behind this lies a tendency<br>to move forward on assumption<br>and hypothesis alone—<br>more often than we realize.</p>
-            </div>
-            <div class="concept-block">
-                <p class="jp-text">tatsumakiは、<br>事実（FACT）に基づきながら、<br>課題の前にある「問い」から<br>丁寧に見つめ直します。</p>
-                <p class="en-text">Grounded in fact,<br>we step back to examine<br>the question that precedes<br>the challenge itself.</p>
-            </div>
-            <div class="concept-block">
-                <p class="jp-text">何が本質的な課題なのか。<br>何を問い直すべきなのか。<br>お客様とともに整理し、<br>言語化し、見えるかたちにしていきます。</p>
-                <p class="en-text">What is the essential challenge?<br>What needs to be re-examined?<br>Together with our clients,<br>we clarify, articulate,<br>and make it visible.</p>
-            </div>
-        </div>
-        <div class="concept-footer">
-            <p class="highlight-text">問いが変わることで、戦略が変わり、<br>戦略が変わることで、表現が変わり、<br>最終的に結果が変わっていくと考えています。</p>
-            <p class="en-highlight">When the question changes, strategy changes. Expression changes. And ultimately, results change.</p>
-            <p class="closing-text">私たちは、<br>事実に基づいた問いの設計から<br>アウトプットまでを一貫して担い、<br>最適なかたちで実行まで伴走します。</p>
-            <p class="en-closing">From the design of fact-based questions through to final output, we take full ownership—and walk alongside you all the way to execution.</p>
-        </div>
-    </section>
-
-    <section id="flow" class="structure-section">
-        <h2>STRUCTURE</h2>
-        <p class="section-lead">私たちはまず、その背景にある構造を捉え、本当に向き合うべき「問い」を設計します。</p>
-        <p class="section-sub-lead">When the question changes, the strategy changes. The output changes.</p>
-        
-        <div class="structure-container">
-            <h3>私たちの考え方</h3>
-            <div class="step-cards">
-                <div class="step-card">
-                    <div class="card-icon">01</div>
-                    <h4>複雑な課題を構造として捉える</h4>
-                    <p>現象の表層ではなく、背景にある構造を見抜く。</p>
-                </div>
-                <div class="step-card">
-                    <div class="card-icon">02</div>
-                    <h4>問いを深め、戦略を描く</h4>
-                    <p>問いを起点に、揺れながらも本質に向かって思考を深める。</p>
-                </div>
-                <div class="step-card">
-                    <div class="card-icon">03</div>
-                    <h4>形にし、価値として広げる</h4>
-                    <p>本質にたどり着いた先に、意味のあるアウトプットを生み出し、社会へと広げていく。</p>
-                </div>
-            </div>
-
-            <div class="diagram-wrapper">
-                <div class="diagram-container">
-                    <div class="circle layer-3">
-                        <span class="layer-label">形になる</span>
-                        <span class="layer-desc">戦略を形にし、届くアウトプットへつなげる<br>（アウトプット）</span>
-                    </div>
-                    <div class="circle layer-2">
-                        <span class="layer-label">戦略</span>
-                        <span class="layer-desc">問いを起点に戦略を設計する<br>（設計・構造化）</span>
-                    </div>
-                    <div class="circle layer-1">
-                        <span class="layer-label">本質的な問い</span>
-                        <span class="layer-desc">課題の核となる問いを見極める<br>（核・起点）</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="service" class="service-section">
-        <h2>SERVICE</h2>
-        <p class="section-lead">その課題の前にある問いから、戦略を設計し、叶えたいカタチへとつなげる。</p>
-        <p class="section-sub-lead">tatsumakiは、問いの本質を捉えることから始め、うねりのある戦略を設計し、実装まで伴走します。</p>
-        
-        <div class="service-grid">
-            <div class="service-item">
-                <div class="service-num">01</div>
-                <h3>問いを定義する</h3>
-                <ul>
-                    <li>事実の収集と整理</li>
-                    <li>構造の把握</li>
-                    <li>課題の再定義</li>
-                    <li>問いの言語化</li>
-                </ul>
-            </div>
-            <div class="service-item">
-                <div class="service-num">02</div>
-                <h3>戦略を設計する</h3>
-                <ul>
-                    <li>仮説設計</li>
-                    <li>ターゲット設計</li>
-                    <li>コンセプト設計</li>
-                    <li>検証と再設計</li>
-                    <li>戦略統合</li>
-                </ul>
-            </div>
-            <div class="service-item">
-                <div class="service-num">03</div>
-                <h3>カタチにする</h3>
-                <ul>
-                    <li>ブランド設計</li>
-                    <li>クリエイティブ制作</li>
-                    <li>デジタル施策</li>
-                    <li>実行ディレクション</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="works" class="works-section">
-        <h2>WORKS</h2>
-        <div class="coming-soon">Coming Soon</div>
-    </section>
-
-    <section id="about" class="about-section">
-        <h2>ABOUT</h2>
-        <div class="about-container">
-            <div class="about-image">
-                <img src="profile.jpg" alt="正木達也">
-            </div>
-            <div class="about-details">
-                <p class="english-name">Tatsuya Masaki</p>
-                <h3>正木 達也</h3>
-                <p class="title">Strategic Director / Creative Director</p>
-                <p class="profile-text">
-                    1984年生まれ。課題の背景にある構造を見つめ、本質的な「問い」を設計することから始める戦略・クリエイティブディレクションを行う。事実（FACT）を起点にしたロジックと、感情を動かすクリエイティブを融合させ、企業や地域のうねりを生み出すアウトプットを一貫して手がける。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <h2>CONTACT</h2>
-        <p class="contact-lead">プロジェクトのご相談、お見積もりなど、お気軽にお問い合わせください。</p>
-        <div class="contact-button-wrapper">
-            <a href="mailto:info@tatsumaki.uk" class="contact-button">info@tatsumaki.uk</a>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <p>&copy; 2026 TATSUMAKI Creative Studio. All Rights Reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        /* スマホ用メニュー */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items
