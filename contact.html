@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>お問い合わせ — tatsumaki</title><meta name="description" content="tatsumakiへのお問い合わせ。"><link rel="stylesheet" href="revision.css"><link rel="stylesheet" href="direction-v3.css"><link rel="stylesheet" href="phase6-pages.css"></head>
+<body class="works-page contact-page">
+<header class="works-header works-header--no-brand"><a href="index.html#contact">← TOP</a><a href="works.html">Selected Work</a></header>
+<div class="page-language" aria-label="Language"><button type="button" data-page-lang="en">E</button><span>/</span><button type="button" data-page-lang="ja">J</button></div>
+<main class="contact-main-page">
+  <div class="contact-intro"><p class="section-eyebrow">CONTACT</p><h1>お問い合わせ</h1><p>ご相談内容をお聞かせください。</p><a href="mailto:info@tatsumaki.uk">info@tatsumaki.uk</a></div>
+  <div class="contact-form-wrap">
+    <ol class="contact-steps" aria-label="お問い合わせの手順"><li id="step-input" aria-current="step">01 入力</li><li id="step-review">02 確認</li><li>03 メール作成</li></ol>
+    <p class="form-note">現在は、入力内容をメールアプリに引き継いで送信する方式です。<br>このページから自動送信はされません。</p>
+    <form id="inquiry-form" novalidate>
+      <p class="required-note">「必須」の項目をご入力ください。</p>
+      <div class="form-field"><label for="inquiry-company">会社・団体名 <small>任意</small></label><input id="inquiry-company" name="company" autocomplete="organization" maxlength="120"></div>
+      <div class="form-field"><label for="inquiry-name">お名前 <small>必須</small></label><input id="inquiry-name" name="name" autocomplete="name" required maxlength="80" aria-describedby="error-name"><p class="field-error" id="error-name" hidden></p></div>
+      <div class="form-field"><label for="inquiry-email">メールアドレス <small>必須</small></label><input id="inquiry-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" aria-describedby="error-email"><p class="field-error" id="error-email" hidden></p></div>
+      <div class="form-field"><label for="inquiry-message">お問い合わせ内容 <small>必須</small></label><textarea id="inquiry-message" name="message" rows="7" required maxlength="5000" aria-describedby="error-message"></textarea><p class="field-error" id="error-message" hidden></p></div>
+      <p class="form-note">入力内容はこのブラウザ画面内で確認できます。メール作成に進むまで外部には送信されません。ページを閉じると入力内容は失われます。</p>
+      <button class="form-primary" type="submit">入力内容を確認する <span aria-hidden="true">→</span></button>
+    </form>
+    <section id="inquiry-review" hidden aria-labelledby="review-heading">
+      <h2 id="review-heading" tabindex="-1">入力内容の確認</h2><dl id="review-fields"></dl>
+      <p class="form-note">内容を確認してメールを作成してください。<br>メールアプリ内の送信操作で、お問い合わせが送信されます。</p>
+      <a id="compose-email" class="form-primary" href="mailto:info@tatsumaki.uk">メールアプリで作成する <span aria-hidden="true">↗</span></a>
+      <p class="form-note" id="compose-notice" hidden role="status">まだ送信完了ではありません。メールアプリで送信を完了してください。アプリが開かない場合は、下の文面をコピーして info@tatsumaki.uk 宛にお送りください。</p>
+      <details class="email-fallback"><summary>メールアプリが開かない場合</summary><label for="email-body">送信用の文面</label><textarea id="email-body" rows="9" readonly></textarea><p>宛先：info@tatsumaki.uk</p></details>
+      <button type="button" id="edit-inquiry" class="form-back">← 入力内容を修正する</button>
+    </section>
+    <noscript><p>フォームの確認機能にはJavaScriptが必要です。<a href="mailto:info@tatsumaki.uk">info@tatsumaki.uk</a>へ直接ご連絡ください。</p></noscript>
+  </div>
+</main><footer class="contact-footer"><a href="index.html">tatsumaki</a></footer>
+<script src="phase6-pages.js"></script><script src="contact.js"></script></body></html>

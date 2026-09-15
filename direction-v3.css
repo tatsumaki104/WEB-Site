@@ -1,0 +1,981 @@
+/* WEB修正案v3: A-side black / white direction.
+   B-side is intentionally outside every selector in this file. */
+
+:root {
+  --tatsu-black: #000;
+  --tatsu-white: #fff;
+}
+
+body {
+  background: #fff;
+}
+
+#a-side-root {
+  --ink: #000;
+  --paper: #fff;
+  --blue: #000;
+  --muted: #000;
+  --rule: #000;
+  --navy: #000;
+  --navy-light: #000;
+  --gray-bg: #fff;
+  --blue-accent: #000;
+  --blue-mid: #000;
+  --blue-light: #000;
+  --blue-pale: #fff;
+  color: #000 !important;
+  background: #fff !important;
+}
+
+#a-side-root *,
+#a-side-root *::before,
+#a-side-root *::after {
+  border-color: #000;
+}
+
+#a-side-root :where(h1, h2, h3, h4, p, a, button, li, small, span, div) {
+  color: #000 !important;
+}
+
+#a-side-root :where(#top, #concept, #service, #works, #about, #contact),
+#a-side-root .concept-manifesto,
+#a-side-root .service-card,
+#a-side-root .home-collection-tabs button,
+#a-side-root .home-static-mosaic,
+#a-side-root .home-studio-grid img {
+  background: #fff !important;
+}
+
+/* Header */
+#a-side-root nav {
+  height: 68px;
+  padding: 10px 3.5vw;
+  background: #fff !important;
+  border-bottom: 1px solid #000 !important;
+  backdrop-filter: none;
+}
+
+#a-side-root .nav-logo,
+#a-side-root .nav-logo a {
+  display: flex;
+  align-items: center;
+}
+
+#a-side-root .nav-symbol {
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: brightness(0);
+  transform-origin: center;
+  transition: transform 700ms cubic-bezier(.16, 1, .3, 1);
+}
+
+#a-side-root .nav-logo:hover .nav-symbol {
+  transform: rotate(36deg);
+}
+
+#a-side-root .nav-symbol {
+  rotate: var(--nav-turn, 0deg);
+}
+
+#a-side-root .nav-links {
+  gap: clamp(22px, 3.5vw, 56px);
+  margin-right: 0;
+}
+
+#a-side-root .nav-links a {
+  color: #000 !important;
+  font-size: 13px;
+  letter-spacing: .14em;
+}
+
+#a-side-root .nav-links li:last-child a {
+  display: inline-flex;
+  align-items: center;
+  gap: 34px;
+  min-width: 122px;
+  justify-content: space-between;
+  padding: 13px 16px;
+  color: #fff !important;
+  background: #000 !important;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#a-side-root .nav-links li:last-child a span {
+  color: #fff !important;
+  font-size: 22px;
+  line-height: 1;
+}
+
+body:not(.tatsu-b-visible) > .contact-fixed {
+  display: none;
+}
+
+/* TOP */
+#a-side-root #top {
+  min-height: 900px;
+  height: 100svh;
+  max-height: none;
+  padding: 118px 4vw 72px;
+  overflow: hidden;
+  background: #fff !important;
+}
+
+#a-side-root #top .language-switch {
+  top: 91px;
+}
+
+#a-side-root .hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 94vw);
+  min-height: 710px;
+  gap: 0;
+  justify-content: center;
+}
+
+#a-side-root .hero-studio-label {
+  order: 1;
+  margin-bottom: 17px;
+  font-size: clamp(16px, 1.7vw, 23px);
+  line-height: 1;
+  letter-spacing: .08em;
+}
+
+#a-side-root .brand-lockup {
+  order: 2;
+  width: min(640px, 72vw);
+  gap: 22px;
+  margin: 0 auto;
+}
+
+#a-side-root .brand-symbol {
+  width: 58px;
+  height: 72px;
+  filter: brightness(0);
+  transform-origin: center;
+}
+
+#a-side-root .brand-word {
+  width: calc(100% - 80px);
+  filter: brightness(0);
+}
+
+#a-side-root .side-choice {
+  order: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  width: min(980px, 90vw);
+  gap: clamp(70px, 11vw, 170px);
+  margin: clamp(48px, 7vh, 88px) auto 0;
+}
+
+#a-side-root .side-choice .side-divider {
+  display: none;
+}
+
+#a-side-root .side-choice > a,
+#a-side-root .side-choice > button {
+  position: relative;
+  min-width: 0;
+  gap: 14px;
+  padding: 0 0 12px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+#a-side-root .side-choice .side-a {
+  font-size: clamp(180px, 22vw, 310px);
+  line-height: .65;
+  color: #000 !important;
+}
+
+#a-side-root .side-choice svg {
+  width: auto;
+  height: clamp(170px, 20vw, 270px);
+  margin: 0;
+  overflow: visible;
+}
+
+#a-side-root .side-choice svg rect {
+  fill: #000 !important;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+#a-side-root .side-choice small {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: .22em;
+}
+
+#a-side-root .side-choice > a > span:last-child,
+#a-side-root .side-choice > button > span:last-child {
+  font-size: clamp(26px, 2.7vw, 40px);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+#a-side-root .hero-tagline {
+  order: 4;
+  margin: 31px 0 0;
+  font-family: var(--sans), sans-serif !important;
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: .06em;
+  font-weight: 400;
+}
+
+#a-side-root .hero-contact {
+  order: 5;
+  gap: 3px;
+  margin-top: 9px;
+  font-size: 15px;
+}
+
+#a-side-root .hero-contact span {
+  font-size: 52px;
+  line-height: .8;
+  transition: transform 500ms cubic-bezier(.16, 1, .3, 1);
+}
+
+#a-side-root .hero-contact:hover span {
+  transform: rotate(90deg);
+}
+
+#a-side-root .scroll-indicator {
+  bottom: 20px;
+}
+
+#a-side-root.tatsu-motion-boot #top .hero-studio-label,
+#a-side-root.tatsu-motion-boot #top .brand-lockup,
+#a-side-root.tatsu-motion-boot #top .side-choice,
+#a-side-root.tatsu-motion-boot #top .hero-tagline,
+#a-side-root.tatsu-motion-boot #top .hero-contact,
+#a-side-root.tatsu-motion-boot #top .scroll-indicator,
+#a-side-root.tatsu-motion-boot #top .language-switch,
+#a-side-root.tatsu-motion-boot nav {
+  opacity: 0;
+}
+
+#a-side-root.tatsu-top-live nav {
+  animation: tatsu-top-piece 760ms cubic-bezier(.16, 1, .3, 1) forwards;
+}
+
+#a-side-root.tatsu-top-live #top .hero-studio-label {
+  animation: tatsu-top-piece 760ms cubic-bezier(.16, 1, .3, 1) 80ms both;
+}
+
+#a-side-root.tatsu-top-live #top .side-choice > a {
+  animation: tatsu-side-a-in 1000ms cubic-bezier(.16, 1, .3, 1) 160ms both;
+}
+
+#a-side-root.tatsu-top-live #top .side-choice > button {
+  animation: tatsu-side-b-in 1000ms cubic-bezier(.16, 1, .3, 1) 220ms both;
+}
+
+#a-side-root.tatsu-top-live #top .hero-tagline {
+  animation: tatsu-top-piece 800ms cubic-bezier(.16, 1, .3, 1) 470ms both;
+}
+
+#a-side-root.tatsu-top-live #top .hero-contact {
+  animation: tatsu-top-piece 800ms cubic-bezier(.16, 1, .3, 1) 560ms both;
+}
+
+#a-side-root.tatsu-top-live #top .scroll-indicator,
+#a-side-root.tatsu-top-live #top .language-switch {
+  animation: tatsu-top-piece 760ms cubic-bezier(.16, 1, .3, 1) 650ms both;
+}
+
+#a-side-root.tatsu-top-live #top .brand-lockup {
+  opacity: 1;
+}
+
+@keyframes tatsu-top-piece {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes tatsu-side-a-in {
+  from { opacity: 0; transform: translate3d(-22vw, 0, 0) scale(.82); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes tatsu-side-b-in {
+  from { opacity: 0; transform: translate3d(22vw, 0, 0) scale(.82); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+#a-side-root.tatsu-top-live .side-choice svg rect {
+  animation: tatsu-pixel-build 760ms cubic-bezier(.16, 1, .3, 1) both;
+  animation-delay: calc(150ms + var(--pixel-index) * 22ms);
+}
+
+@keyframes tatsu-pixel-build {
+  from {
+    transform: translate3d(var(--pixel-x), var(--pixel-y), 0) scale(.25) rotate(18deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+  }
+}
+
+#a-side-root.tatsu-top-live .brand-symbol {
+  animation: tatsu-symbol-settle 900ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes tatsu-symbol-settle {
+  from { transform: rotate(82deg); }
+  to { transform: rotate(0); }
+}
+
+/* Shared section treatment */
+#a-side-root :where(#top, #concept, #service, #works, #about, #contact) {
+  position: relative;
+  isolation: isolate;
+}
+
+#a-side-root .section-eyebrow,
+#a-side-root #about > div:first-child {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px !important;
+  letter-spacing: .22em !important;
+  translate: var(--tatsu-section-drift, 0px) 0;
+  will-change: translate;
+}
+
+#a-side-root .section-eyebrow::before,
+#a-side-root #about > div:first-child::before {
+  content: '';
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  background: url('assets/swirl.png') center / contain no-repeat;
+  filter: brightness(0);
+}
+
+/* Concept */
+#a-side-root #concept {
+  padding: 110px 5vw 150px;
+  overflow: hidden;
+}
+
+#a-side-root #concept .section-eyebrow {
+  margin-bottom: 40px;
+}
+
+#a-side-root .concept-manifesto {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+#a-side-root .concept-statement {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 76svh;
+  margin: 0;
+  padding: 10vh 0;
+  overflow: hidden;
+}
+
+#a-side-root .concept-ja {
+  position: relative;
+  z-index: 2;
+  width: min(1080px, 82vw);
+}
+
+#a-side-root .kinetic-line {
+  overflow: hidden;
+  font-family: 'Noto Serif JP', 'Yu Mincho', serif !important;
+  font-size: clamp(40px, 5.25vw, 82px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -.04em;
+  transform: none !important;
+}
+
+#a-side-root .kinetic-line span {
+  padding: 0;
+  background: transparent !important;
+}
+
+#a-side-root .kinetic-line::after,
+#a-side-root .kinetic-line:not(.is-visible)::after,
+#a-side-root .kinetic-line.is-visible::after {
+  display: none !important;
+  animation: none !important;
+}
+
+#a-side-root .tatsu-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, .85em, 0) rotate(4deg);
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+
+#a-side-root .is-char-live .tatsu-char {
+  animation: tatsu-char-rise 620ms cubic-bezier(.16, 1, .3, 1) forwards;
+  animation-delay: calc(var(--char-index) * 24ms);
+}
+
+@keyframes tatsu-char-rise {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+}
+
+#a-side-root .concept-en {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 12vh;
+  width: min(290px, 24vw);
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.8;
+  transform: none !important;
+}
+
+#a-side-root .tatsu-concept-slab {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: var(--slab-top, 32%);
+  width: var(--slab-width, 58%);
+  height: clamp(54px, 8vw, 124px);
+  background: #000;
+  transform: translate3d(-120%, 0, 0);
+  pointer-events: none;
+}
+
+#a-side-root .concept-statement.is-slab-live .tatsu-concept-slab {
+  animation: tatsu-slab-pass 1300ms cubic-bezier(.76, 0, .24, 1) forwards;
+}
+
+@keyframes tatsu-slab-pass {
+  0% { transform: translate3d(-120%, 0, 0); }
+  48% { transform: translate3d(24%, 0, 0); }
+  100% { transform: translate3d(210%, 0, 0); }
+}
+
+/* Service */
+#a-side-root #service {
+  padding: 96px 5vw 110px;
+  overflow: hidden;
+  border-top: 1px solid #000;
+}
+
+#a-side-root .service-heading,
+#a-side-root .service-bridge,
+#a-side-root .flow-item-title,
+#a-side-root .service-card-title {
+  color: #000 !important;
+}
+
+#a-side-root .flow-thinking-hr,
+#a-side-root #about > div:nth-child(2) {
+  background: #000 !important;
+  opacity: 1 !important;
+}
+
+#a-side-root .flow-icon svg [stroke],
+#a-side-root .spiral-diagram [stroke] {
+  stroke: #000 !important;
+  opacity: 1 !important;
+}
+
+#a-side-root .spiral-diagram circle {
+  fill: #000 !important;
+  opacity: 1 !important;
+}
+
+#a-side-root .spiral-diagram {
+  translate: 0 var(--spiral-y, 0px);
+  rotate: var(--spiral-turn, 0deg);
+  will-change: translate, rotate;
+}
+
+#a-side-root .spiral-diagram ellipse[fill]:not([fill='none']),
+#a-side-root .spiral-diagram path[fill]:not([fill='none']) {
+  fill: none !important;
+}
+
+#a-side-root .service-card {
+  border: 1px solid #000 !important;
+  min-height: 230px;
+}
+
+#a-side-root .service-card:not(:last-child)::after {
+  border-left-color: #000 !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Works: color exists only inside supplied work imagery. */
+#a-side-root .works-home {
+  padding: 96px 5vw 120px;
+  color: #000 !important;
+  background: #fff !important;
+  border-top: 1px solid #000 !important;
+  overflow: hidden;
+}
+
+#a-side-root .home-collection-tabs {
+  gap: 0;
+  max-width: 900px;
+  border: 1px solid #000;
+}
+
+#a-side-root .home-collection-tabs button {
+  border: 0 !important;
+  color: #000 !important;
+  background: #fff !important;
+  opacity: 1 !important;
+}
+
+#a-side-root .home-collection-tabs button + button {
+  border-left: 1px solid #000 !important;
+}
+
+#a-side-root .home-collection-tabs button[aria-selected='true'] {
+  color: #fff !important;
+  background: #000 !important;
+}
+
+#a-side-root .home-subtabs {
+  border-color: #000 !important;
+}
+
+#a-side-root .home-subtabs button {
+  color: #000 !important;
+  opacity: 1 !important;
+}
+
+#a-side-root .home-subtabs button[aria-selected='true'] {
+  border-color: #000 !important;
+}
+
+#a-side-root .home-works-copy p,
+#a-side-root .home-works-copy a {
+  color: #000 !important;
+}
+
+#a-side-root .home-static-mosaic {
+  translate: 0 var(--works-y, 0px);
+  will-change: translate;
+}
+
+/* About / Contact */
+#a-side-root #about {
+  padding: 96px 5vw 120px !important;
+  color: #000 !important;
+  background: #fff !important;
+  border-top: 1px solid #000 !important;
+  overflow: hidden;
+}
+
+#a-side-root #about * {
+  color: #000 !important;
+}
+
+#a-side-root #about img {
+  filter: grayscale(100%) contrast(118%) !important;
+  translate: 0 var(--about-y, 0px);
+  scale: var(--about-scale, 1);
+  will-change: translate, scale;
+}
+
+#a-side-root #about [style*='opacity'] {
+  opacity: 1 !important;
+}
+
+#a-side-root #contact {
+  padding: 96px 5vw 120px;
+  color: #000 !important;
+  background: #fff !important;
+  border-top: 1px solid #000 !important;
+  overflow: hidden;
+}
+
+#a-side-root .contact-main {
+  color: #000 !important;
+  border-color: #000 !important;
+}
+
+/* Immersion-like moving masses shared by A-side sections. */
+#a-side-root .tatsu-block-field {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#a-side-root .tatsu-motion-block {
+  position: absolute;
+  display: block;
+  background: #000;
+  transform: translate3d(var(--block-start, -120vw), 0, 0);
+}
+
+#a-side-root .tatsu-motion-block:nth-child(1) {
+  top: 18%;
+  width: min(62vw, 900px);
+  height: clamp(70px, 12vw, 170px);
+  --block-start: -120vw;
+  --block-end: 220vw;
+}
+
+#a-side-root .tatsu-motion-block:nth-child(2) {
+  top: 61%;
+  right: 0;
+  width: min(38vw, 560px);
+  height: clamp(38px, 6vw, 86px);
+  --block-start: 120vw;
+  --block-end: -220vw;
+}
+
+#a-side-root .is-tatsu-section-live .tatsu-motion-block:nth-child(1) {
+  animation: tatsu-block-cross 1350ms cubic-bezier(.76, 0, .24, 1) forwards;
+}
+
+#a-side-root .is-tatsu-section-live .tatsu-motion-block:nth-child(2) {
+  animation: tatsu-block-cross 1150ms cubic-bezier(.76, 0, .24, 1) 160ms forwards;
+}
+
+@keyframes tatsu-block-cross {
+  from { transform: translate3d(var(--block-start), 0, 0); }
+  to { transform: translate3d(var(--block-end), 0, 0); }
+}
+
+#a-side-root [data-tatsu-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 48px, 0);
+  clip-path: inset(0 0 18% 0);
+  transition:
+    opacity 500ms ease,
+    transform 950ms cubic-bezier(.16, 1, .3, 1),
+    clip-path 950ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: var(--tatsu-delay, 0ms);
+}
+
+#a-side-root [data-tatsu-reveal].is-tatsu-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  clip-path: inset(0 0 0 0);
+}
+
+/* Intro */
+html.tatsu-intro-lock,
+html.tatsu-intro-lock body {
+  overflow: hidden;
+}
+
+#tatsu-motion-intro {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+#tatsu-motion-intro .intro-mass {
+  position: absolute;
+  left: 0;
+  top: 29%;
+  width: 100vw;
+  height: 42vh;
+  background: #000;
+  transform: translate3d(-105%, 0, 0);
+}
+
+#tatsu-motion-intro.is-live .intro-mass {
+  animation: tatsu-intro-mass 1600ms cubic-bezier(.76, 0, .24, 1) forwards;
+}
+
+@keyframes tatsu-intro-mass {
+  0% { transform: translate3d(-105%, 0, 0); }
+  48% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(105%, 0, 0); }
+}
+
+#tatsu-motion-intro .intro-lockup {
+  position: fixed;
+  z-index: 2;
+  left: 50vw;
+  top: 50vh;
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+  width: min(1080px, 84vw);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+  mix-blend-mode: difference;
+}
+
+#tatsu-motion-intro .intro-lockup img {
+  display: block;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+#tatsu-motion-intro .intro-symbol {
+  flex: 0 0 10%;
+  width: 10%;
+  transform-origin: center;
+}
+
+#tatsu-motion-intro .intro-word {
+  width: 87%;
+}
+
+#tatsu-motion-intro.is-live .intro-lockup {
+  animation: tatsu-intro-logo 850ms cubic-bezier(.16, 1, .3, 1) 180ms forwards;
+}
+
+#tatsu-motion-intro.is-live .intro-symbol {
+  animation: tatsu-intro-spin 1700ms cubic-bezier(.16, 1, .3, 1) 120ms forwards;
+}
+
+@keyframes tatsu-intro-logo {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes tatsu-intro-spin {
+  0% { transform: rotate(-24deg) scale(.86); }
+  68% { transform: rotate(128deg) scale(1.08); }
+  100% { transform: rotate(18deg) scale(1); }
+}
+
+/* Separate A-side pages */
+body.works-gallery-page,
+body.work-detail-page,
+body.contact-page {
+  color: #000 !important;
+  background: #fff !important;
+}
+
+body.works-gallery-page .works-header,
+body.work-detail-page .works-header,
+body.contact-page .works-header {
+  background: #fff !important;
+  border-bottom: 1px solid #000;
+}
+
+body.works-gallery-page .works-header img,
+body.work-detail-page .works-header img,
+body.contact-page .works-header img {
+  filter: brightness(0);
+}
+
+body.works-gallery-page :where(a, button, span, div),
+body.work-detail-page :where(a, button, span, div, p, h1, h2, h3),
+body.contact-page :where(a, button, span, div, p, h1, h2, h3, label, li) {
+  color: #000 !important;
+}
+
+body.works-gallery-page .collection-tabs button {
+  color: #000 !important;
+  background: #fff !important;
+  border: 1px solid #000 !important;
+  opacity: 1 !important;
+}
+
+body.works-gallery-page .collection-tabs button[aria-selected='true'],
+body.contact-page .form-primary {
+  color: #fff !important;
+  background: #000 !important;
+  border-color: #000 !important;
+}
+
+body.works-gallery-page .collection-tabs button[aria-selected='true'] * ,
+body.contact-page .form-primary * {
+  color: #fff !important;
+}
+
+body.works-gallery-page .gallery-filters,
+body.works-gallery-page .gallery-filters button,
+body.contact-page :where(input, textarea, select),
+body.contact-page .contact-steps {
+  color: #000 !important;
+  background: #fff !important;
+  border-color: #000 !important;
+}
+
+@media (max-width: 800px) {
+  #a-side-root nav {
+    padding: 10px 22px;
+  }
+
+  #a-side-root .nav-symbol {
+    width: 33px;
+    height: 33px;
+  }
+
+  #a-side-root #top {
+    min-height: 780px;
+    padding: 100px 20px 62px;
+  }
+
+  #a-side-root .hero-inner {
+    min-height: 640px;
+  }
+
+  #a-side-root .brand-lockup {
+    width: min(540px, 84vw);
+  }
+
+  #a-side-root .side-choice {
+    gap: 28px;
+    margin-top: 62px;
+  }
+
+  #a-side-root .side-choice .side-a {
+    font-size: clamp(130px, 30vw, 220px);
+  }
+
+  #a-side-root .side-choice svg {
+    height: clamp(120px, 27vw, 190px);
+  }
+
+  #a-side-root .side-choice > a > span:last-child,
+  #a-side-root .side-choice > button > span:last-child {
+    font-size: clamp(20px, 4vw, 30px);
+  }
+
+  #a-side-root .concept-statement {
+    min-height: 66svh;
+  }
+
+  #a-side-root .kinetic-line {
+    font-size: clamp(32px, 8vw, 58px);
+  }
+
+  #a-side-root .concept-en {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 80%;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  #a-side-root #top {
+    min-height: 720px;
+    height: 100svh;
+  }
+
+  #a-side-root .hero-studio-label {
+    font-size: 13px;
+  }
+
+  #a-side-root .brand-symbol {
+    width: 38px;
+    height: 50px;
+  }
+
+  #a-side-root .brand-lockup {
+    gap: 14px;
+  }
+
+  #a-side-root .brand-word {
+    width: calc(100% - 52px);
+  }
+
+  #a-side-root .side-choice {
+    width: 94vw;
+    gap: 10px;
+    margin-top: 52px;
+  }
+
+  #a-side-root .side-choice .side-a {
+    font-size: clamp(112px, 34vw, 170px);
+  }
+
+  #a-side-root .side-choice svg {
+    height: clamp(105px, 30vw, 150px);
+  }
+
+  #a-side-root .side-choice small {
+    font-size: 10px;
+  }
+
+  #a-side-root .side-choice > a > span:last-child,
+  #a-side-root .side-choice > button > span:last-child {
+    font-size: 18px;
+  }
+
+  #a-side-root .hero-tagline {
+    margin-top: 25px;
+    font-size: 11px;
+  }
+
+  #a-side-root .hero-contact span {
+    font-size: 42px;
+  }
+
+  #a-side-root #concept {
+    padding: 82px 22px 100px;
+  }
+
+  #a-side-root .concept-statement {
+    min-height: 70svh;
+    padding: 8vh 0;
+  }
+
+  #a-side-root .concept-ja {
+    width: 100%;
+  }
+
+  #a-side-root .kinetic-line {
+    font-size: clamp(28px, 9vw, 44px);
+    line-height: 1.55;
+  }
+
+  #a-side-root .tatsu-concept-slab {
+    width: 82%;
+    height: 58px;
+  }
+
+  #a-side-root .service-card:not(:last-child)::after {
+    border-top-color: #000 !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+  }
+
+  #tatsu-motion-intro .intro-lockup {
+    width: 90vw;
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #tatsu-motion-intro {
+    display: none;
+  }
+
+  #a-side-root .tatsu-char,
+  #a-side-root [data-tatsu-reveal] {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    animation: none;
+    transition: none;
+  }
+
+  #a-side-root .tatsu-block-field,
+  #a-side-root .tatsu-concept-slab {
+    display: none;
+  }
+}
