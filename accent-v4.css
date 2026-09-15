@@ -1,0 +1,634 @@
+/* PHASE 5: high-chroma accents and scroll-linked color transitions.
+   Every selector is limited to the A-side. The B-side remains untouched. */
+
+#a-side-root.tatsu-accent-v4 {
+  --ink-v4: #0e1536;
+  --pink-v4: #ff3f8e;
+  --yellow-v4: #ffe000;
+  --acid-v4: #d8ff00;
+  --orange-v4: #ff781f;
+  --blue-v4: #246bfd;
+  --cyan-v4: #17bfe5;
+  --mint-v4: #59cbb5;
+  --violet-v4: #7158ff;
+  --red-v4: #ff3045;
+  --accent-turn: 0deg;
+  color: var(--ink-v4) !important;
+}
+
+#a-side-root.tatsu-accent-v4 :where(h1, h2, h3, h4, p, a, button, li, small, span, div) {
+  color: var(--ink-v4) !important;
+}
+
+#tatsu-motion-intro .intro-mass {
+  background: linear-gradient(90deg, #ff3f8e 0 34%, #246bfd 34% 67%, #ffe000 67% 100%);
+}
+
+/* TOP: the A/B entrances are the key visual, with the exact B-side Pixel B. */
+#a-side-root.tatsu-accent-v4 #top::before,
+#a-side-root.tatsu-accent-v4 #top::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#a-side-root.tatsu-accent-v4 #top::before {
+  left: -8vw;
+  bottom: -11vw;
+  width: clamp(210px, 31vw, 510px);
+  aspect-ratio: 1;
+  background: var(--pink-v4);
+}
+
+#a-side-root.tatsu-accent-v4 #top::after {
+  right: -6vw;
+  top: 17%;
+  width: clamp(160px, 23vw, 370px);
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle, var(--blue-v4) 0 4px, transparent 4.5px) 0 0 / 19px 19px;
+}
+
+#a-side-root.tatsu-accent-v4 #top .hero-inner,
+#a-side-root.tatsu-accent-v4 #top .language-switch,
+#a-side-root.tatsu-accent-v4 #top .scroll-indicator {
+  position: relative;
+  z-index: 4;
+}
+
+#a-side-root.tatsu-accent-v4 .side-choice > a::before,
+#a-side-root.tatsu-accent-v4 .side-choice > button::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 38%;
+  width: clamp(132px, 15vw, 220px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(.82);
+  transition: transform 650ms cubic-bezier(.16, 1, .3, 1), border-radius 650ms cubic-bezier(.16, 1, .3, 1);
+}
+
+#a-side-root.tatsu-accent-v4 .side-choice > a::before {
+  background: var(--yellow-v4);
+}
+
+#a-side-root.tatsu-accent-v4 .side-choice > button::before {
+  background: var(--cyan-v4);
+  border-radius: 18% 56% 22% 48%;
+}
+
+#a-side-root.tatsu-accent-v4 .side-choice > :is(a, button):hover::before {
+  transform: translate(-50%, -50%) scale(1.12) rotate(9deg);
+  border-radius: 50%;
+}
+
+#a-side-root.tatsu-accent-v4 .side-choice > button > svg {
+  display: none !important;
+}
+
+#a-side-root.tatsu-accent-v4 .side-b-pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(8, clamp(13px, 1.55vw, 22px));
+  grid-template-rows: repeat(12, clamp(13px, 1.55vw, 22px));
+  gap: clamp(3px, .35vw, 5px);
+  width: auto;
+  margin: 0 auto;
+}
+
+#a-side-root.tatsu-accent-v4 .side-b-pixel-grid .px {
+  width: clamp(13px, 1.55vw, 22px);
+  height: clamp(13px, 1.55vw, 22px);
+  border-radius: 2px;
+  transform: translate3d(var(--pixel-x, 0), var(--pixel-y, 0), 0) scale(.15);
+  opacity: 0;
+}
+
+#a-side-root.tatsu-accent-v4.tatsu-top-live .side-b-pixel-grid .px:not(.px-empty) {
+  animation: v4-pixel-arrive 680ms cubic-bezier(.16, 1, .3, 1) forwards;
+  animation-delay: calc(100ms + var(--pixel-index, 0) * 13ms);
+}
+
+#a-side-root.tatsu-accent-v4 .side-b-pixel-grid .px-blue { background: #4a7ef5; }
+#a-side-root.tatsu-accent-v4 .side-b-pixel-grid .px-light { background: #a8bdf7; }
+#a-side-root.tatsu-accent-v4 .side-b-pixel-grid .px-empty { background: transparent; }
+
+@keyframes v4-pixel-arrive {
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+#a-side-root.tatsu-accent-v4 .hero-contact {
+  position: relative;
+  padding: 4px 22px 0;
+}
+
+#a-side-root.tatsu-accent-v4 .hero-contact::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: auto 0 4px;
+  height: 11px;
+  background: var(--pink-v4);
+  transform: scaleX(.38);
+  transition: transform 450ms cubic-bezier(.16, 1, .3, 1);
+}
+
+#a-side-root.tatsu-accent-v4 .hero-contact:hover::before { transform: scaleX(1); }
+
+/* Every section gets a strong color identity. */
+#a-side-root.tatsu-accent-v4 #concept { --section-accent: var(--acid-v4); --section-accent-2: var(--violet-v4); }
+#a-side-root.tatsu-accent-v4 #service { --section-accent: var(--orange-v4); --section-accent-2: var(--yellow-v4); }
+#a-side-root.tatsu-accent-v4 #works { --section-accent: var(--blue-v4); --section-accent-2: var(--red-v4); }
+#a-side-root.tatsu-accent-v4 #about { --section-accent: var(--mint-v4); --section-accent-2: var(--violet-v4); }
+#a-side-root.tatsu-accent-v4 #contact { --section-accent: var(--pink-v4); --section-accent-2: var(--yellow-v4); }
+
+#a-side-root.tatsu-accent-v4 :where(#concept, #service, #works, #about, #contact) > :not(.accent-sweep):not(.accent-decor) {
+  position: relative;
+  z-index: 3;
+}
+
+#a-side-root.tatsu-accent-v4 .section-eyebrow,
+#a-side-root.tatsu-accent-v4 #about > div:first-child {
+  width: max-content;
+  padding: 10px 18px 10px 10px;
+  color: var(--ink-v4) !important;
+  background: linear-gradient(90deg, var(--section-accent) 0 72%, #fff 72% 100%) !important;
+}
+
+#a-side-root.tatsu-accent-v4 .section-eyebrow::before,
+#a-side-root.tatsu-accent-v4 #about > div:first-child::before {
+  transform: rotate(var(--accent-turn));
+  transition: transform 80ms linear;
+  transform-origin: center;
+}
+
+/* Scroll-linked, full-width section transition. */
+#a-side-root.tatsu-accent-v4 .accent-sweep {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  top: clamp(96px, 16vh, 180px);
+  width: min(88vw, 1380px);
+  height: clamp(94px, 18vh, 210px);
+  background: var(--section-accent);
+  transform: translate3d(var(--sweep-x, -115vw), 0, 0) skewX(-8deg);
+  transform-origin: center;
+  pointer-events: none;
+  will-change: transform;
+}
+
+#a-side-root.tatsu-accent-v4 .accent-sweep::after {
+  content: '';
+  position: absolute;
+  right: -22%;
+  bottom: -46%;
+  width: 55%;
+  height: 42%;
+  background: var(--section-accent-2);
+}
+
+#a-side-root.tatsu-accent-v4 .accent-decor {
+  position: absolute;
+  z-index: 1;
+  width: clamp(90px, 13vw, 210px);
+  aspect-ratio: 1;
+  right: -3vw;
+  top: 31%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--section-accent) 0 3.5px, transparent 4px) 0 0 / 17px 17px;
+  translate: 0 var(--decor-y, 0px);
+  rotate: var(--decor-turn, 0deg);
+  will-change: translate, rotate;
+  pointer-events: none;
+}
+
+#a-side-root.tatsu-accent-v4 .tatsu-block-field { display: none; }
+
+/* CONCEPT: compact Ryden-like pacing, character build, fluorescent fields. */
+#a-side-root.tatsu-accent-v4 #concept {
+  padding: 92px 5vw 110px;
+}
+
+#a-side-root.tatsu-accent-v4 .concept-manifesto {
+  position: relative;
+  max-width: 1320px;
+  padding: 0 clamp(14px, 3vw, 46px);
+}
+
+#a-side-root.tatsu-accent-v4 .concept-manifesto::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: -4vw;
+  top: 7%;
+  width: clamp(120px, 18vw, 290px);
+  height: 32%;
+  background: var(--acid-v4);
+  transform: skewY(-7deg);
+}
+
+#a-side-root.tatsu-accent-v4 .concept-statement {
+  min-height: clamp(260px, 37vh, 390px);
+  padding: clamp(38px, 5vh, 68px) 0;
+  border-top: 1px solid var(--ink-v4);
+}
+
+#a-side-root.tatsu-accent-v4 .concept-statement:last-child {
+  border-bottom: 1px solid var(--ink-v4);
+}
+
+#a-side-root.tatsu-accent-v4 .concept-statement:nth-child(even) .concept-ja {
+  margin-left: clamp(22px, 9vw, 150px);
+}
+
+#a-side-root.tatsu-accent-v4 .kinetic-line {
+  font-size: clamp(29px, 3.65vw, 59px);
+  line-height: 1.42;
+}
+
+#a-side-root.tatsu-accent-v4 .concept-statement:nth-child(odd) .kinetic-line:nth-child(2),
+#a-side-root.tatsu-accent-v4 .concept-statement:nth-child(even) .kinetic-line:first-child {
+  background: linear-gradient(transparent 66%, var(--acid-v4) 66% 91%, transparent 91%) !important;
+}
+
+#a-side-root.tatsu-accent-v4 .tatsu-concept-slab {
+  z-index: 1;
+  height: clamp(42px, 5vw, 78px);
+  background: var(--violet-v4);
+}
+
+#a-side-root.tatsu-accent-v4 .concept-ja,
+#a-side-root.tatsu-accent-v4 .concept-en { z-index: 2; }
+
+/* SERVICE: PPT proportions, large tornado and stepped motion. */
+#a-side-root.tatsu-accent-v4 #service {
+  padding: 96px 5vw 150px;
+}
+
+#a-side-root.tatsu-accent-v4 .service-heading {
+  max-width: 1100px;
+  margin-bottom: 46px;
+  font-size: clamp(26px, 3vw, 44px);
+}
+
+#a-side-root.tatsu-accent-v4 .flow-content {
+  grid-template-columns: minmax(360px, .82fr) minmax(520px, 1.18fr);
+  gap: clamp(28px, 4vw, 70px);
+  max-width: 1320px;
+}
+
+#a-side-root.tatsu-accent-v4 .flow-right {
+  max-width: 690px;
+  justify-self: end;
+}
+
+#a-side-root.tatsu-accent-v4 .spiral-diagram {
+  width: min(100%, 680px);
+  min-height: 570px;
+  scale: var(--diagram-scale, .92);
+  transform-origin: center 84%;
+  transition: scale 900ms cubic-bezier(.16, 1, .3, 1), filter 900ms ease;
+}
+
+#a-side-root.tatsu-accent-v4 .spiral-diagram ellipse:nth-of-type(3n+1) { stroke: var(--pink-v4) !important; }
+#a-side-root.tatsu-accent-v4 .spiral-diagram ellipse:nth-of-type(3n+2) { stroke: var(--orange-v4) !important; }
+#a-side-root.tatsu-accent-v4 .spiral-diagram ellipse:nth-of-type(3n) { stroke: var(--blue-v4) !important; }
+#a-side-root.tatsu-accent-v4 .spiral-diagram path[stroke] { stroke: var(--violet-v4) !important; }
+#a-side-root.tatsu-accent-v4 .spiral-diagram circle { fill: var(--blue-v4) !important; }
+
+#a-side-root.tatsu-accent-v4 .flow-item:nth-child(3n+1) .flow-icon svg * { stroke: var(--pink-v4) !important; }
+#a-side-root.tatsu-accent-v4 .flow-item:nth-child(3n+2) .flow-icon svg * { stroke: var(--orange-v4) !important; }
+#a-side-root.tatsu-accent-v4 .flow-item:nth-child(3n) .flow-icon svg * { stroke: var(--blue-v4) !important; }
+
+#a-side-root.tatsu-accent-v4 #service.accent-sequence-ready :where(.service-heading, .flow-left, .flow-right, .service-bridge, .service-card) {
+  opacity: 0 !important;
+  transform: translate3d(0, 46px, 0);
+  clip-path: inset(0 0 35% 0);
+}
+
+#a-side-root.tatsu-accent-v4 #service :where(.service-heading, .flow-left, .flow-right, .service-bridge, .service-card).is-accent-live {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0);
+  clip-path: inset(0);
+  transition: opacity 420ms ease, transform 850ms cubic-bezier(.16, 1, .3, 1), clip-path 850ms cubic-bezier(.16, 1, .3, 1);
+}
+
+#a-side-root.tatsu-accent-v4 .service-bridge {
+  max-width: 1240px;
+  margin: 54px auto 28px;
+  text-align: left;
+  font-size: clamp(21px, 2vw, 30px);
+}
+
+#a-side-root.tatsu-accent-v4 .service-bridge::after {
+  content: '';
+  display: block;
+  width: 38%;
+  height: 12px;
+  margin-top: 14px;
+  background: var(--acid-v4);
+}
+
+#a-side-root.tatsu-accent-v4 .service-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 46px);
+  max-width: 1120px;
+  padding: 42px 0 70px;
+  align-items: start;
+}
+
+#a-side-root.tatsu-accent-v4 .service-card {
+  min-height: 205px;
+  padding: 19px 22px 22px;
+  background: #fff !important;
+  overflow: visible;
+}
+
+#a-side-root.tatsu-accent-v4 .service-card:nth-child(1).is-accent-live { translate: 0 62px; }
+#a-side-root.tatsu-accent-v4 .service-card:nth-child(2).is-accent-live { translate: 0 18px; }
+#a-side-root.tatsu-accent-v4 .service-card:nth-child(3).is-accent-live { translate: 0 -26px; }
+
+#a-side-root.tatsu-accent-v4 .service-card::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -13px;
+  width: calc(100% + 2px);
+  height: 13px;
+  background: var(--card-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+#a-side-root.tatsu-accent-v4 .service-card:nth-child(1) { --card-accent: var(--yellow-v4); }
+#a-side-root.tatsu-accent-v4 .service-card:nth-child(2) { --card-accent: var(--orange-v4); }
+#a-side-root.tatsu-accent-v4 .service-card:nth-child(3) { --card-accent: var(--pink-v4); }
+#a-side-root.tatsu-accent-v4 .service-card.is-accent-live::before { animation: v4-marker 780ms cubic-bezier(.16, 1, .3, 1) 180ms forwards; }
+
+#a-side-root.tatsu-accent-v4 .service-en {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 2px 5px;
+  margin-left: 12px;
+  font-size: clamp(23px, 2.15vw, 34px);
+  isolation: isolate;
+}
+
+#a-side-root.tatsu-accent-v4 .service-en::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  height: 47%;
+  background: var(--card-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+#a-side-root.tatsu-accent-v4 .service-card.is-accent-live .service-en::after {
+  animation: v4-marker 720ms cubic-bezier(.16, 1, .3, 1) 420ms forwards;
+}
+
+#a-side-root.tatsu-accent-v4 .service-en-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, .85em, 0) rotate(4deg);
+}
+
+#a-side-root.tatsu-accent-v4 .service-card.is-accent-live .service-en-char {
+  animation: v4-word-rise 520ms cubic-bezier(.16, 1, .3, 1) forwards;
+  animation-delay: calc(260ms + var(--char-index) * 42ms);
+}
+
+@keyframes v4-marker { to { transform: scaleX(1); } }
+@keyframes v4-word-rise { to { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); } }
+
+/* WORKS: PPT's three colored doors and mosaic-first hierarchy. */
+#a-side-root.tatsu-accent-v4 #works {
+  padding: 96px 5vw 135px;
+}
+
+#a-side-root.tatsu-accent-v4 .home-collection-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 1.3vw, 18px);
+  max-width: 1040px;
+  margin: 0 auto 26px;
+  border: 0;
+}
+
+#a-side-root.tatsu-accent-v4 .home-collection-tabs button {
+  min-height: 64px;
+  padding: 14px 28px !important;
+  border: 0 !important;
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+  font-size: clamp(17px, 1.6vw, 25px);
+  transition: transform 450ms cubic-bezier(.16, 1, .3, 1), filter 300ms ease;
+}
+
+#a-side-root.tatsu-accent-v4 .home-collection-tabs button:nth-child(1) { background: var(--blue-v4) !important; color: #fff !important; }
+#a-side-root.tatsu-accent-v4 .home-collection-tabs button:nth-child(2) { background: var(--red-v4) !important; color: #fff !important; }
+#a-side-root.tatsu-accent-v4 .home-collection-tabs button:nth-child(3) { background: var(--yellow-v4) !important; color: var(--ink-v4) !important; }
+#a-side-root.tatsu-accent-v4 .home-collection-tabs button[aria-selected='true'] { transform: translateY(-8px); filter: saturate(1.22); }
+
+#a-side-root.tatsu-accent-v4 #works .home-subtabs {
+  max-width: 1040px;
+  margin: 0 auto 20px;
+}
+
+#a-side-root.tatsu-accent-v4 #works .home-subtabs button[aria-selected='true'] {
+  border-color: var(--pink-v4) !important;
+  box-shadow: inset 0 -8px var(--pink-v4);
+}
+
+#a-side-root.tatsu-accent-v4 #works .home-works-layout {
+  display: block;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+#a-side-root.tatsu-accent-v4 #works .home-static-mosaic,
+#a-side-root.tatsu-accent-v4 #works .home-studio-grid {
+  width: min(100%, 1040px);
+  margin: 0;
+  background: #fff !important;
+}
+
+#a-side-root.tatsu-accent-v4 #works .home-works-copy h3,
+#a-side-root.tatsu-accent-v4 #works .home-works-copy p { display: none; }
+
+#a-side-root.tatsu-accent-v4 #works .home-works-copy {
+  display: flex;
+  justify-content: flex-end;
+  width: min(100%, 1040px);
+}
+
+#a-side-root.tatsu-accent-v4 #works .home-works-copy a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--yellow-v4) !important;
+  border-bottom: 2px solid var(--ink-v4);
+  font-size: clamp(17px, 1.6vw, 24px);
+}
+
+#a-side-root.tatsu-accent-v4 #works[data-work-mode='other'] .home-subtabs-studio { display: none; }
+
+/* ABOUT: keep the supplied content, use the PPT's portrait + long horizontal field. */
+#a-side-root.tatsu-accent-v4 #about {
+  min-height: 850px;
+  padding: 96px 5vw 130px !important;
+}
+
+#a-side-root.tatsu-accent-v4 #about::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 31%;
+  right: 0;
+  top: 46%;
+  height: 210px;
+  background: var(--mint-v4);
+  transform: translate3d(var(--about-band-x, 14%), 0, 0);
+  will-change: transform;
+}
+
+#a-side-root.tatsu-accent-v4 #about > div:last-child {
+  max-width: 1260px !important;
+  margin: 80px auto 0;
+}
+
+#a-side-root.tatsu-accent-v4 #about > div:last-child > div {
+  display: grid !important;
+  grid-template-columns: minmax(240px, 330px) minmax(420px, 1fr) !important;
+  gap: clamp(38px, 5vw, 86px) !important;
+  align-items: start;
+}
+
+#a-side-root.tatsu-accent-v4 #about img {
+  outline: 16px solid var(--yellow-v4);
+  outline-offset: -8px;
+}
+
+#a-side-root.tatsu-accent-v4 #about .about-photo-v4 {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+#a-side-root.tatsu-accent-v4 #about .about-copy-v4 {
+  padding: clamp(20px, 2.5vw, 42px) 0 0;
+}
+
+#a-side-root.tatsu-accent-v4 #about [style*='font-size:26px'] {
+  display: inline-block;
+  box-shadow: inset 0 -11px var(--pink-v4);
+}
+
+/* CONTACT: finish with a full-strength pink field. */
+#a-side-root.tatsu-accent-v4 #contact {
+  min-height: 680px;
+  padding: 100px 5vw 130px;
+}
+
+#a-side-root.tatsu-accent-v4 #contact::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: 42%;
+  height: 58%;
+  background: var(--pink-v4);
+}
+
+#a-side-root.tatsu-accent-v4 #contact .contact-layout {
+  position: relative;
+  z-index: 2;
+  max-width: 1240px;
+  margin: 70px auto 0;
+  padding: clamp(28px, 5vw, 72px);
+  background: #fff;
+  border: 2px solid var(--ink-v4);
+}
+
+#a-side-root.tatsu-accent-v4 #contact .contact-main span {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--yellow-v4);
+}
+
+@media (max-width: 900px) {
+  #a-side-root.tatsu-accent-v4 .flow-content {
+    grid-template-columns: 1fr;
+  }
+
+  #a-side-root.tatsu-accent-v4 .flow-right {
+    max-width: 650px;
+    justify-self: center;
+  }
+
+  #a-side-root.tatsu-accent-v4 .service-card:nth-child(n).is-accent-live { translate: 0 0; }
+
+  #a-side-root.tatsu-accent-v4 #about > div:last-child > div {
+    grid-template-columns: minmax(210px, 290px) 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #a-side-root.tatsu-accent-v4 #top::before { left: -34vw; bottom: -18vw; }
+  #a-side-root.tatsu-accent-v4 #top::after { right: -34vw; }
+
+  #a-side-root.tatsu-accent-v4 .side-b-pixel-grid {
+    grid-template-columns: repeat(8, 12px);
+    grid-template-rows: repeat(12, 12px);
+    gap: 3px;
+  }
+
+  #a-side-root.tatsu-accent-v4 .side-b-pixel-grid .px { width: 12px; height: 12px; }
+
+  #a-side-root.tatsu-accent-v4 .concept-statement {
+    min-height: 260px;
+    padding: 36px 0;
+  }
+
+  #a-side-root.tatsu-accent-v4 .kinetic-line { font-size: clamp(24px, 7.4vw, 37px); }
+
+  #a-side-root.tatsu-accent-v4 .service-cards,
+  #a-side-root.tatsu-accent-v4 .home-collection-tabs { grid-template-columns: 1fr; }
+
+  #a-side-root.tatsu-accent-v4 .home-collection-tabs button { clip-path: none; }
+
+  #a-side-root.tatsu-accent-v4 .spiral-diagram { min-height: 0; }
+
+  #a-side-root.tatsu-accent-v4 #about > div:last-child > div {
+    display: block !important;
+  }
+
+  #a-side-root.tatsu-accent-v4 #about::after {
+    left: 12%;
+    top: 44%;
+    height: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #a-side-root.tatsu-accent-v4 .accent-sweep { display: none; }
+  #a-side-root.tatsu-accent-v4 #service.accent-sequence-ready :where(.service-heading, .flow-left, .flow-right, .service-bridge, .service-card) {
+    opacity: 1 !important;
+    transform: none;
+    clip-path: none;
+  }
+  #a-side-root.tatsu-accent-v4 .service-en-char { opacity: 1; transform: none; }
+}
